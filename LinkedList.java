@@ -1,29 +1,78 @@
 public class LinkedList{
     private boolean condition;
+    private Node list;
 
     public LinkedList(){
-        Node list = new Node();
+        list = new Node();
         this.condition = false;
     }
 
     public Node getFront(){
-        return
+        return list.getValue();
     }
 
-    public void Node append(Node node){
-        if(list.getValue() >= 0){
-            list.setNext(node);
-        }else{
-            list.setValue(node.getValue());
-            this.condition = true;
+    public void append(Node node){
+        Node original = node;
+        int stop = -1;
+        while(stop != 0){
+            Node temp = list;
+            if(temp.getNext() == null){
+                temp.setNext(original);
+                stop = 0;
+            }else{
+                temp = temp.getNext();
+            }
+        }
+    }
+
+    public void insert(Node node, int index){
+        Node original = node;
+        int stop = -1;
+        int count = 0;
+        while(stop != 0){
+            Node temp = list;
+            if(list.getNext() == null){
+                list.setNext(original);
+                stop = 0;
+            }else if(count == index){
+                list = node;
+                count++;
+            }else{
+                temp = temp.getNext();
+                count++;
+            }
+        }
+    }
+
+    public Node remove(int index){
+        int stop = -1;
+        while(stop != 0){
+            Node temp = list;
+            if(temp.getNext() == null){
+                temp.setNext(original);
+                stop = 0;
+            }else{
+                temp = temp.getNext();
+            }
         }
     }
 
     public String toString(){
+        int stop = -1;
+        int index = 0;
+        Node temp = list;
         if(condition == false){
             return "There are no items in this list.";
         }else(condition){
-            while()
+            while(stop != 0){
+                System.out.print("Index: " + index + " Data: " + node.getValue() + "\n");
+                index++;
+                if(temp.getNext() == null){
+                    stop = 0;
+                }else{
+                    temp = temp.getNext();
+                }
+            }
         }
     }
 }
