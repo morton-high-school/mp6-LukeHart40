@@ -22,7 +22,7 @@ public class Node{
         this.next = next;
     }
 
-    punlic void setValue(int number){
+    public void setValue(int number){
         this.value = number;
     }
 }

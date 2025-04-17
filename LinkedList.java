@@ -8,7 +8,7 @@ public class LinkedList{
     }
 
     public Node getFront(){
-        return list.getValue();
+        return list;
     }
 
     public void append(Node node){
@@ -34,9 +34,12 @@ public class LinkedList{
             if(list.getNext() == null){
                 list.setNext(original);
                 stop = 0;
-            }else if(count == index){
-                list = node;
-                count++;
+            }else if(count == index - 1){
+                list.setNext(original);
+                while(list.getNext() != null){
+                    list.getNext().setNext(list.getNext());
+                }
+                stop = 0;
             }else{
                 temp = temp.getNext();
                 count++;
@@ -46,15 +49,7 @@ public class LinkedList{
 
     public Node remove(int index){
         int stop = -1;
-        while(stop != 0){
-            Node temp = list;
-            if(temp.getNext() == null){
-                temp.setNext(original);
-                stop = 0;
-            }else{
-                temp = temp.getNext();
-            }
-        }
+        return list;
     }
 
     public String toString(){
@@ -62,10 +57,10 @@ public class LinkedList{
         int index = 0;
         Node temp = list;
         if(condition == false){
-            return "There are no items in this list.";
-        }else(condition){
+            return ("There are no items in this list.");
+        }else if(condition){
             while(stop != 0){
-                System.out.print("Index: " + index + " Data: " + node.getValue() + "\n");
+                return ("Index: " + index + " Data: " + temp.getData() + "\n");
                 index++;
                 if(temp.getNext() == null){
                     stop = 0;
