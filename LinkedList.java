@@ -14,6 +14,7 @@ public class LinkedList{
     public void append(Node node){
         Node original = node;
         int stop = -1;
+        this.condition = true;
         while(stop != 0){
             Node temp = list;
             if(temp.getNext() == null){
@@ -51,8 +52,9 @@ public class LinkedList{
 
     public String toString(){
         int stop = -1;
-        int index = -1;
+        int index = 0;
         Node temp = list;
+        String values = "";
         if(condition == false){
             return ("There are no items in this list.");
         }
@@ -60,9 +62,10 @@ public class LinkedList{
             if(temp.getNext() == null){
                 stop = 0;
             }
-            index++;
-            return("Index: " + index + " Data: " + temp.getData() + "\n");
+            values += ("Index: " + index + " Data: " + temp.getData() + "\n");
             temp = temp.getNext();
+            index++;
         }
+        return values;
     }
 }
