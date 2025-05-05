@@ -1,10 +1,8 @@
 public class LinkedList{
-    private boolean condition;
     private Node list;
 
     public LinkedList(){
         list = new Node();
-        this.condition = false;
     }
 
     public Node getFront(){
@@ -14,7 +12,6 @@ public class LinkedList{
     public void append(Node node){
         Node original = node;
         int stop = -1;
-        this.condition = true;
         while(stop != 0){
             Node temp = list;
             if(temp.getNext() == null){
@@ -30,13 +27,13 @@ public class LinkedList{
         Node original = node;
         int stop = -1;
         int count = 0;
+        Node temp = list;
         while(stop != 0){
-            Node temp = list;
-            if(list.getNext() == null){
+            if(temp.getNext() == null){
                 list.setNext(original);
                 stop = 0;
             }else if(count == index - 1){
-                list.setNext(original);
+                temp.setNext(original);
                 stop = 0;
             }else{
                 temp = temp.getNext();
@@ -47,7 +44,21 @@ public class LinkedList{
 
     public Node remove(int index){
         int stop = -1;
-        return list;
+        int count = 0;
+        Node temp = list;
+        Node returned = null;
+        while(stop != 0){
+            if(temp.getNext() == null){
+                stop = 0;
+            }else if(count + 1 == index){
+                temp.setNext(temp.getNext());
+                returned = temp.getNext();
+            }else{
+                temp = temp.getNext();
+                count++;
+            }
+        }
+        return returned;
     }
 
     public String toString(){
@@ -55,15 +66,15 @@ public class LinkedList{
         int index = 0;
         Node temp = list;
         String values = "";
-        if(condition == false){
-            return ("There are no items in this list.");
+        if(temp == null){
+            values = ("There are no items in this list.");
         }
         while(stop != 0){
-            if(temp.getNext() == null){
+            temp = temp.getNext();
+            if(temp == null){
                 stop = 0;
             }
             values += ("Index: " + index + " Data: " + temp.getData() + "\n");
-            temp = temp.getNext();
             index++;
         }
         return values;
